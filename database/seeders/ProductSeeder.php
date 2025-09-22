@@ -1,0 +1,480 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use App\Models\Product;
+use App\Models\Category;
+
+class ProductSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        // Get categories or create them if they don't exist
+        $makananCategory = Category::firstOrCreate([
+            'name' => 'Makanan'
+        ], [
+            'description' => 'Menu makanan utama dan cemilan',
+            'image' => 'categories/makanan.jpg',
+        ]);
+
+        $minumanCategory = Category::firstOrCreate([
+            'name' => 'Minuman'
+        ], [
+            'description' => 'Berbagai jenis minuman segar',
+            'image' => 'categories/minuman.jpg',
+        ]);
+
+        $snackCategory = Category::firstOrCreate([
+            'name' => 'Snack'
+        ], [
+            'description' => 'Camilan dan makanan ringan',
+            'image' => 'categories/snack.jpg',
+        ]);
+
+        // Makanan Products
+        $makananProducts = [
+            [
+                'name' => 'Indomie Biasa R/G',
+                'description' => 'Indomie rebus/goreng biasa yang lezat',
+                'price' => 8000,
+                'stock' => 50,
+                'category' => 'Makanan',
+                'image' => 'products/indomie-biasa.jpg',
+                'is_best_seller' => true,
+                'category_id' => $makananCategory->id,
+            ],
+            [
+                'name' => 'Indomie Telor R/G',
+                'description' => 'Indomie dengan tambahan telur',
+                'price' => 11000,
+                'stock' => 45,
+                'category' => 'Makanan',
+                'image' => 'products/indomie-telor.jpg',
+                'is_best_seller' => true,
+                'category_id' => $makananCategory->id,
+            ],
+            [
+                'name' => 'Mie Cemek Kuah',
+                'description' => 'Mie cemek berkuah hangat',
+                'price' => 10000,
+                'stock' => 30,
+                'category' => 'Makanan',
+                'image' => 'products/mie-cemek-kuah.jpg',
+                'is_best_seller' => false,
+                'category_id' => $makananCategory->id,
+            ],
+            [
+                'name' => 'Mie Cemek Goreng',
+                'description' => 'Mie cemek goreng pedas',
+                'price' => 10000,
+                'stock' => 30,
+                'category' => 'Makanan',
+                'image' => 'products/mie-cemek-goreng.jpg',
+                'is_best_seller' => false,
+                'category_id' => $makananCategory->id,
+            ],
+            [
+                'name' => 'Pizza Mie',
+                'description' => 'Kreasi unik pizza dengan mie',
+                'price' => 15000,
+                'stock' => 20,
+                'category' => 'Makanan',
+                'image' => 'products/pizza-mie.jpg',
+                'is_best_seller' => true,
+                'category_id' => $makananCategory->id,
+            ],
+            [
+                'name' => 'Nasi Putih',
+                'description' => 'Nasi putih hangat',
+                'price' => 4000,
+                'stock' => 100,
+                'category' => 'Makanan',
+                'image' => 'products/nasi-putih.jpg',
+                'is_best_seller' => false,
+                'category_id' => $makananCategory->id,
+            ],
+        ];
+
+        // Snack Products
+        $snackProducts = [
+            [
+                'name' => 'Robak Coklat',
+                'description' => 'Keripik robak rasa coklat',
+                'price' => 8000,
+                'stock' => 25,
+                'category' => 'Snack',
+                'image' => 'products/robak-coklat.jpg',
+                'is_best_seller' => false,
+                'category_id' => $snackCategory->id,
+            ],
+            [
+                'name' => 'Strawberi/Keju',
+                'description' => 'Camilan rasa strawberi atau keju',
+                'price' => 8000,
+                'stock' => 25,
+                'category' => 'Snack',
+                'image' => 'products/strawberi-keju.jpg',
+                'is_best_seller' => false,
+                'category_id' => $snackCategory->id,
+            ],
+            [
+                'name' => 'Extra Keju',
+                'description' => 'Camilan dengan extra keju',
+                'price' => 2000,
+                'stock' => 40,
+                'category' => 'Snack',
+                'image' => 'products/extra-keju.jpg',
+                'is_best_seller' => false,
+                'category_id' => $snackCategory->id,
+            ],
+            [
+                'name' => 'Piscet Coklat Keju',
+                'description' => 'Piscet dengan rasa coklat keju',
+                'price' => 10000,
+                'stock' => 20,
+                'category' => 'Snack',
+                'image' => 'products/piscet-coklat-keju.jpg',
+                'is_best_seller' => false,
+                'category_id' => $snackCategory->id,
+            ],
+            [
+                'name' => 'Kentang Goreng',
+                'description' => 'Kentang goreng renyah',
+                'price' => 8000,
+                'stock' => 30,
+                'category' => 'Snack',
+                'image' => 'products/kentang-goreng.jpg',
+                'is_best_seller' => true,
+                'category_id' => $snackCategory->id,
+            ],
+            [
+                'name' => 'Sosis Goreng',
+                'description' => 'Sosis goreng gurih',
+                'price' => 8000,
+                'stock' => 25,
+                'category' => 'Snack',
+                'image' => 'products/sosis-goreng.jpg',
+                'is_best_seller' => false,
+                'category_id' => $snackCategory->id,
+            ],
+            [
+                'name' => 'Otak2 Goreng',
+                'description' => 'Otak-otak goreng pedas',
+                'price' => 8000,
+                'stock' => 20,
+                'category' => 'Snack',
+                'image' => 'products/otak2-goreng.jpg',
+                'is_best_seller' => false,
+                'category_id' => $snackCategory->id,
+            ],
+            [
+                'name' => 'Mix Kentang Sosis Otak',
+                'description' => 'Kombinasi kentang, sosis, dan otak-otak',
+                'price' => 15000,
+                'stock' => 15,
+                'category' => 'Snack',
+                'image' => 'products/mix-kentang-sosis-otak.jpg',
+                'is_best_seller' => true,
+                'category_id' => $snackCategory->id,
+            ],
+            [
+                'name' => 'Empe-Empe',
+                'description' => 'Camilan tradisional empe-empe',
+                'price' => 12000,
+                'stock' => 18,
+                'category' => 'Snack',
+                'image' => 'products/empe-empe.jpg',
+                'is_best_seller' => false,
+                'category_id' => $snackCategory->id,
+            ],
+            [
+                'name' => 'Pisang Ijo',
+                'description' => 'Pisang ijo khas Makassar',
+                'price' => 8000,
+                'stock' => 20,
+                'category' => 'Snack',
+                'image' => 'products/pisang-ijo.jpg',
+                'is_best_seller' => false,
+                'category_id' => $snackCategory->id,
+            ],
+            [
+                'name' => 'Dimsum',
+                'description' => 'Dimsum kukus lezat',
+                'price' => 10000,
+                'stock' => 25,
+                'category' => 'Snack',
+                'image' => 'products/dimsum.jpg',
+                'is_best_seller' => false,
+                'category_id' => $snackCategory->id,
+            ],
+        ];
+
+        // Minuman Products
+        $minumanProducts = [
+            [
+                'name' => 'Air Mineral',
+                'description' => 'Air mineral segar',
+                'price' => 4000,
+                'stock' => 100,
+                'category' => 'Minuman',
+                'image' => 'products/air-mineral.jpg',
+                'is_best_seller' => false,
+                'category_id' => $minumanCategory->id,
+            ],
+            [
+                'name' => 'Susu Putih P/D',
+                'description' => 'Susu putih panas/dingin',
+                'price' => 5000,
+                'stock' => 50,
+                'category' => 'Minuman',
+                'image' => 'products/susu-putih.jpg',
+                'is_best_seller' => false,
+                'category_id' => $minumanCategory->id,
+            ],
+            [
+                'name' => 'Susu Coklat P/D',
+                'description' => 'Susu coklat panas/dingin',
+                'price' => 5000,
+                'stock' => 50,
+                'category' => 'Minuman',
+                'image' => 'products/susu-coklat.jpg',
+                'is_best_seller' => true,
+                'category_id' => $minumanCategory->id,
+            ],
+            [
+                'name' => 'Teh Manis P/D',
+                'description' => 'Teh manis panas/dingin',
+                'price' => 5000,
+                'stock' => 80,
+                'category' => 'Minuman',
+                'image' => 'products/teh-manis.jpg',
+                'is_best_seller' => true,
+                'category_id' => $minumanCategory->id,
+            ],
+            [
+                'name' => 'Teh Tawar P/D',
+                'description' => 'Teh tawar panas/dingin',
+                'price' => 3000,
+                'stock' => 80,
+                'category' => 'Minuman',
+                'image' => 'products/teh-tawar.jpg',
+                'is_best_seller' => false,
+                'category_id' => $minumanCategory->id,
+            ],
+            [
+                'name' => 'Nutrisari',
+                'description' => 'Minuman nutrisari segar',
+                'price' => 6000,
+                'stock' => 40,
+                'category' => 'Minuman',
+                'image' => 'products/nutrisari.jpg',
+                'is_best_seller' => false,
+                'category_id' => $minumanCategory->id,
+            ],
+            [
+                'name' => 'Es Milo',
+                'description' => 'Es milo dingin menyegarkan',
+                'price' => 7000,
+                'stock' => 30,
+                'category' => 'Minuman',
+                'image' => 'products/es-milo.jpg',
+                'is_best_seller' => true,
+                'category_id' => $minumanCategory->id,
+            ],
+            [
+                'name' => 'Es Ovaltine',
+                'description' => 'Es ovaltine dingin',
+                'price' => 7000,
+                'stock' => 30,
+                'category' => 'Minuman',
+                'image' => 'products/es-ovaltine.jpg',
+                'is_best_seller' => false,
+                'category_id' => $minumanCategory->id,
+            ],
+            [
+                'name' => 'Fanta Susu',
+                'description' => 'Minuman fanta susu unik',
+                'price' => 10000,
+                'stock' => 25,
+                'category' => 'Minuman',
+                'image' => 'products/fanta-susu.jpg',
+                'is_best_seller' => true,
+                'category_id' => $minumanCategory->id,
+            ],
+            [
+                'name' => 'Soda Susu',
+                'description' => 'Minuman soda susu segar',
+                'price' => 10000,
+                'stock' => 25,
+                'category' => 'Minuman',
+                'image' => 'products/soda-susu.jpg',
+                'is_best_seller' => false,
+                'category_id' => $minumanCategory->id,
+            ],
+            [
+                'name' => 'Es Beng-Beng',
+                'description' => 'Es beng-beng coklat',
+                'price' => 7000,
+                'stock' => 20,
+                'category' => 'Minuman',
+                'image' => 'products/es-beng-beng.jpg',
+                'is_best_seller' => false,
+                'category_id' => $minumanCategory->id,
+            ],
+            [
+                'name' => 'Es Teh Tarik',
+                'description' => 'Es teh tarik khas',
+                'price' => 7000,
+                'stock' => 35,
+                'category' => 'Minuman',
+                'image' => 'products/es-teh-tarik.jpg',
+                'is_best_seller' => true,
+                'category_id' => $minumanCategory->id,
+            ],
+            [
+                'name' => 'Es Chocolatos',
+                'description' => 'Es chocolatos dingin',
+                'price' => 7000,
+                'stock' => 25,
+                'category' => 'Minuman',
+                'image' => 'products/es-chocolatos.jpg',
+                'is_best_seller' => false,
+                'category_id' => $minumanCategory->id,
+            ],
+            [
+                'name' => 'Pop Ice',
+                'description' => 'Es pop ice dengan berbagai rasa',
+                'price' => 6000,
+                'stock' => 40,
+                'category' => 'Minuman',
+                'image' => 'products/pop-ice.jpg',
+                'is_best_seller' => false,
+                'category_id' => $minumanCategory->id,
+            ],
+            [
+                'name' => 'Teh Pucuk',
+                'description' => 'Teh pucuk harum',
+                'price' => 5000,
+                'stock' => 60,
+                'category' => 'Minuman',
+                'image' => 'products/teh-pucuk.jpg',
+                'is_best_seller' => false,
+                'category_id' => $minumanCategory->id,
+            ],
+            [
+                'name' => 'Floridina',
+                'description' => 'Minuman floridina segar',
+                'price' => 5000,
+                'stock' => 45,
+                'category' => 'Minuman',
+                'image' => 'products/floridina.jpg',
+                'is_best_seller' => false,
+                'category_id' => $minumanCategory->id,
+            ],
+            [
+                'name' => 'Fanta 250 ML',
+                'description' => 'Fanta kaleng 250ml',
+                'price' => 5000,
+                'stock' => 50,
+                'category' => 'Minuman',
+                'image' => 'products/fanta-250ml.jpg',
+                'is_best_seller' => false,
+                'category_id' => $minumanCategory->id,
+            ],
+            [
+                'name' => 'Good Day Freez P/D',
+                'description' => 'Good Day Freez panas/dingin',
+                'price' => 7000,
+                'stock' => 30,
+                'category' => 'Minuman',
+                'image' => 'products/good-day-freez.jpg',
+                'is_best_seller' => false,
+                'category_id' => $minumanCategory->id,
+            ],
+            [
+                'name' => 'Good Day P/D',
+                'description' => 'Good Day panas/dingin',
+                'price' => 7000,
+                'stock' => 35,
+                'category' => 'Minuman',
+                'image' => 'products/good-day.jpg',
+                'is_best_seller' => false,
+                'category_id' => $minumanCategory->id,
+            ],
+            [
+                'name' => 'Susu Jahe',
+                'description' => 'Susu jahe hangat',
+                'price' => 5000,
+                'stock' => 25,
+                'category' => 'Minuman',
+                'image' => 'products/susu-jahe.jpg',
+                'is_best_seller' => false,
+                'category_id' => $minumanCategory->id,
+            ],
+            [
+                'name' => 'Kopi Hitam',
+                'description' => 'Kopi hitam tubruk',
+                'price' => 5000,
+                'stock' => 40,
+                'category' => 'Minuman',
+                'image' => 'products/kopi-hitam.jpg',
+                'is_best_seller' => true,
+                'category_id' => $minumanCategory->id,
+            ],
+            [
+                'name' => 'Kopi ABC Susu',
+                'description' => 'Kopi ABC dengan susu',
+                'price' => 5000,
+                'stock' => 35,
+                'category' => 'Minuman',
+                'image' => 'products/kopi-abc-susu.jpg',
+                'is_best_seller' => false,
+                'category_id' => $minumanCategory->id,
+            ],
+            [
+                'name' => 'Indocafe Coffemix',
+                'description' => 'Indocafe coffemix 3 in 1',
+                'price' => 5000,
+                'stock' => 40,
+                'category' => 'Minuman',
+                'image' => 'products/indocafe-coffemix.jpg',
+                'is_best_seller' => false,
+                'category_id' => $minumanCategory->id,
+            ],
+            [
+                'name' => 'Luwak',
+                'description' => 'Kopi Luwak premium',
+                'price' => 5000,
+                'stock' => 30,
+                'category' => 'Minuman',
+                'image' => 'products/luwak.jpg',
+                'is_best_seller' => false,
+                'category_id' => $minumanCategory->id,
+            ],
+        ];
+
+        // Combine all products
+        $allProducts = array_merge($makananProducts, $snackProducts, $minumanProducts);
+
+        // Create products
+        foreach ($allProducts as $product) {
+            Product::create([
+                'name' => $product['name'],
+                'description' => $product['description'],
+                'price' => $product['price'],
+                'stock' => $product['stock'],
+                'category' => $product['category'],
+                'image' => $product['image'],
+                'is_best_seller' => $product['is_best_seller'],
+                'category_id' => $product['category_id'],
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
+    }
+}

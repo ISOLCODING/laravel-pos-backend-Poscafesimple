@@ -4,6 +4,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +21,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('pages.auth.login');
 });
-
+Route::get('/symlink', function () {
+    Artisan::call('storage:link');
+});
 Route::middleware(['auth'])->group(function () {
     Route::get('home', function () {
         return view('pages.dashboard');
